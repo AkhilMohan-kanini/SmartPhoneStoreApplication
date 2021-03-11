@@ -1,2 +1,0 @@
-1. Add variants in RAM and Colour
-2. Add Required in Product.cs
