@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h3>Welcome, @ViewData["AdminID"]</h3>
+
+@using (Html.BeginForm("AddProduct", "Admin"))
+{
+    <input type="Submit" value="Add Product" />
+}
+
+@using (Html.BeginForm("ViewProducts", "Admin"))
+{
+    <input type="Submit" value="View Products" />
+}
+
+@using (Html.BeginForm("ViewOrders", "Admin"))
+{
+    <input type="Submit" value="View Orders" />
+}
+
+
+

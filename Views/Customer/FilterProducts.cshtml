@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SmartPhoneStoreApplication.Product>
+
+@{
+    ViewBag.Title = "Filter Products";
+}
+
+<h2>FilterProducts</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RAM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Display)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Battery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryCamera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryCamera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OsName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RAM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Display)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Battery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryCamera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryCamera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Processor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OsName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) 
+        </td>
+    </tr>
+}
+
+</table>
