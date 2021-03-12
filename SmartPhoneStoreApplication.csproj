@@ -210,6 +210,7 @@
       <DependentUpon>SmartPhoneStoreModel.edmx</DependentUpon>
       <LastGenOutput>SmartPhoneStoreModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="SmartPhoneStoreModel.edmx.sql" />
     <Content Include="SmartPhoneStoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SmartPhoneStoreModel.edmx</DependentUpon>
@@ -243,11 +244,17 @@
       <DependentUpon>SmartPhoneStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cart.cs">
+      <DependentUpon>SmartPhoneStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Admin\AddProduct.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ViewOrders.cs" />
     <Compile Include="Controllers\Customer\CustomerController.cs" />
-    <Compile Include="Controllers\Customer\FilterProducts.cs" />
+    <Compile Include="Controllers\Customer\TrackOrders.cs" />
+    <Compile Include="Controllers\Home\CompareProducts.cs" />
+    <Compile Include="Controllers\Home\FilterProducts.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>SmartPhoneStoreModel.tt</DependentUpon>
     </Compile>
@@ -287,7 +294,10 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Views\Admin\ViewOrders.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Customer\FilterProducts.cshtml" />
+    <Content Include="Views\Home\FilterProducts.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\CompareProducts.cshtml" />
+    <Content Include="Views\Customer\TrackOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -297,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

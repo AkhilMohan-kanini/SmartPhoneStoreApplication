@@ -12,9 +12,14 @@ namespace SmartPhoneStoreApplication
     using System;
     using System.Collections.Generic;
     
-    public partial class AdminLogin
+    public partial class Cart
     {
-        public string AdminID { get; set; }
-        public string AdminPassword { get; set; }
+        public int CartID { get; set; }
+        public Nullable<int> CustomerID { get; set; }
+        public Nullable<int> ProductID { get; set; }
+        public string CartStatus { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

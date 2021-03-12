@@ -1,0 +1,140 @@
+﻿@model SmartPhoneStoreApplication.Product
+
+@{
+    ViewBag.Title = "CompareProducts";
+}
+
+<h2>Compare Products</h2>
+<hr/>
+<table>
+    
+    <tr>
+        <td></td>
+        <td>
+
+            @using (Html.BeginForm())
+            {
+                <div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BrandName, "BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("BrandName", ViewBag.Brands as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div id="compareButton" class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Compare" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BrandName)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModelName)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RAM)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ROM)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Display)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Battery)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PrimaryCamera)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SecondaryCamera)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Processor)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SimType)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OsName)
+                    </dt>
+
+                </dl>
+            </div>
+        </td>
+        <td>
+            <div id="productDetails">
+            </div>
+        </td>
+    </tr>
+</table>
+<p>
+
+    @Html.ActionLink("Back to Home", "Index")
+</p>
+
+
+
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script type="text/Javascript">
+            $(document).ready(function () {
+                $("#compareButton").click(function () {
+                    $("#productsDetails").remove();
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("GetProductsForCompare")',
+                        dataType: 'json',
+                        data: { id: $("#BrandName").val() },
+                        success: function (data) {
+                            var items = '';
+                            $.each(data, function (i, item) {
+                                var rows = '<dl class="dl-horizontal">'
+                                + "<dt>" + item.BrandName + "</dt>"
+                                     + "<dt>" + item.ModelName + "</dt>"
+                                     + "<dt>" + item.RAM + "</dt>"
+                                     + "<dt>" + item.ROM + "</dt>"
+                                     + "<dt>" + item.Display + "</dt>"
+                                    + "</dl>";
+                                $('#productDetails').append(rows)
+                            });
+                        },
+                        error:
+                            function (ex) {
+                                var s = jquery.ParseJSON(response.responseText);
+                                alert("Message: " + s.Message);
+                                alert("Expection Type: " + s.ExceptionType);
+                            }
+                    });
+                    return false;
+                })
+            });
+</script>
+

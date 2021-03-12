@@ -8,11 +8,10 @@ namespace SmartPhoneStoreApplication.Controllers.Customer
 {
     public partial class CustomerController : Controller
     {
-        public ActionResult FilterProducts()
-        {
-            var productsData = customerContext.Products.ToList();
-            return View(productsData);
-        }
 
+        public ActionResult TrackOrders()
+        {
+            return View();
+        }
     }
 }

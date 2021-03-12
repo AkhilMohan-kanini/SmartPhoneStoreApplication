@@ -4,13 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SmartPhoneStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SmartPhoneStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminLogin">
           <Key>
             <PropertyRef Name="AdminID" />
           </Key>
           <Property Name="AdminID" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="AdminPassword" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="CartStatus" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -57,7 +66,33 @@
           <Property Name="Color" Type="varchar" MaxLength="30" />
           <Property Name="SimType" Type="varchar" MaxLength="30" />
           <Property Name="OsName" Type="varchar" MaxLength="40" />
+          <Property Name="ImageName" Type="varchar" MaxLength="250" />
+          <Property Name="ImagePath" Type="varchar(max)" />
         </EntityType>
+        <Association Name="FK__Cart__CustomerID__239E4DCF">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProductID__24927208">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Orders__Customer__182C9B23">
           <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -84,9 +119,18 @@
         </Association>
         <EntityContainer Name="SmartPhoneStoreDBModelStoreContainer">
           <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart__CustomerID__239E4DCF" Association="Self.FK__Cart__CustomerID__239E4DCF">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProductID__24927208" Association="Self.FK__Cart__ProductID__24927208">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
           <AssociationSet Name="FK__Orders__Customer__182C9B23" Association="Self.FK__Orders__Customer__182C9B23">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
@@ -96,8 +140,7 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmartPhoneStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -124,6 +167,7 @@
           <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__182C9B23" FromRole="Customers" ToRole="Orders" />
+          <NavigationProperty Name="Carts" Relationship="SmartPhoneStoreDBModel.FK__Cart__CustomerID__239E4DCF" FromRole="Customer" ToRole="Cart" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -157,6 +201,9 @@
           <Property Name="SimType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="OsName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__1920BF5C" FromRole="Products" ToRole="Orders" />
+          <NavigationProperty Name="Carts" Relationship="SmartPhoneStoreDBModel.FK__Cart__ProductID__24927208" FromRole="Product" ToRole="Cart" />
+          <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Orders__Customer__182C9B23">
           <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
@@ -195,73 +242,128 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="Carts" EntityType="SmartPhoneStoreDBModel.Cart" />
+          <AssociationSet Name="FK__Cart__CustomerID__239E4DCF" Association="SmartPhoneStoreDBModel.FK__Cart__CustomerID__239E4DCF">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProductID__24927208" Association="SmartPhoneStoreDBModel.FK__Cart__ProductID__24927208">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="CartStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="SmartPhoneStoreDBModel.FK__Cart__CustomerID__239E4DCF" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="SmartPhoneStoreDBModel.FK__Cart__ProductID__24927208" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Cart__CustomerID__239E4DCF">
+          <End Type="SmartPhoneStoreDBModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="SmartPhoneStoreDBModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__ProductID__24927208">
+          <End Type="SmartPhoneStoreDBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="SmartPhoneStoreDBModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SmartPhoneStoreDBModelStoreContainer" CdmEntityContainer="SmartPhoneStoreDBEntities">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartPhoneStoreDBModelStoreContainer" CdmEntityContainer="SmartPhoneStoreDBEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
+          <ScalarProperty Name="ExpectedDate" ColumnName="ExpectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="ROM" ColumnName="ROM" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="PrimaryCamera" ColumnName="PrimaryCamera" />
+          <ScalarProperty Name="SecondaryCamera" ColumnName="SecondaryCamera" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="SimType" ColumnName="SimType" />
+          <ScalarProperty Name="OsName" ColumnName="OsName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="SmartPhoneStoreDBModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartStatus" ColumnName="CartStatus" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AdminLogins">
-            <EntityTypeMapping TypeName="SmartPhoneStoreDBModel.AdminLogin">
+            <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.AdminLogin)">
               <MappingFragment StoreEntitySet="AdminLogin">
-                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="SmartPhoneStoreDBModel.Customer">
-              <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="SmartPhoneStoreDBModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
-                <ScalarProperty Name="ExpectedDate" ColumnName="ExpectedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="SmartPhoneStoreDBModel.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="ROM" ColumnName="ROM" />
-                <ScalarProperty Name="Display" ColumnName="Display" />
-                <ScalarProperty Name="Battery" ColumnName="Battery" />
-                <ScalarProperty Name="PrimaryCamera" ColumnName="PrimaryCamera" />
-                <ScalarProperty Name="SecondaryCamera" ColumnName="SecondaryCamera" />
-                <ScalarProperty Name="Processor" ColumnName="Processor" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="SimType" ColumnName="SimType" />
-                <ScalarProperty Name="OsName" ColumnName="OsName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -275,7 +377,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

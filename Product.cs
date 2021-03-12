@@ -11,19 +11,19 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel;
+    using System.Web;
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.Orders = new HashSet<Order>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int ProductID { get; set; }
-
-        [Required(ErrorMessage ="Brand Name is Required")]
         public string BrandName { get; set; }
         public string ModelName { get; set; }
         public string RAM { get; set; }
@@ -36,8 +36,16 @@ namespace SmartPhoneStoreApplication
         public string Color { get; set; }
         public string SimType { get; set; }
         public string OsName { get; set; }
-    
+        public string ImageName { get; set; }
+
+        [DisplayName("Upload Image")]
+        public string ImagePath { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

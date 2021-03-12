@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("FilterProducts", "Home"))
+{
+    <input type="submit" value="Filter Products" />
+}
+
+@using (Html.BeginForm("CompareProducts", "Home"))
+{
+    <input type="submit" value="Compare Products" />
+}

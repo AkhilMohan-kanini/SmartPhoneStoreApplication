@@ -4,13 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cb6088d1b5c7495988e226bd4fffdff7" Name="Diagram1">
+      <Diagram DiagramId="cb6088d1b5c7495988e226bd4fffdff7" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="SmartPhoneStoreDBModel.AdminLogin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartPhoneStoreDBModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartPhoneStoreDBModel.Order" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartPhoneStoreDBModel.Product" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="SmartPhoneStoreDBModel.FK__Orders__Customer__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="SmartPhoneStoreDBModel.FK__Orders__ProductI__1920BF5C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartPhoneStoreDBModel.Cart" Width="1.5" PointX="3" PointY="5.25" />
+        <AssociationConnector Association="SmartPhoneStoreDBModel.FK__Cart__CustomerID__239E4DCF" />
+        <AssociationConnector Association="SmartPhoneStoreDBModel.FK__Cart__ProductID__24927208" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
