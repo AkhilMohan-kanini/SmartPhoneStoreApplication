@@ -11,18 +11,9 @@ namespace SmartPhoneStoreApplication.Controllers.Home
 
         public ActionResult CompareProducts()
         {
-            var brandNamesFromDb = context.Products.Select(p => p.BrandName);
+            var brandNamesFromDb = context.Products.Select(p => p.BrandName).Distinct();
             ViewBag.Brands = new SelectList(brandNamesFromDb.ToList(), "BrandName");
 
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem
-            {
-                Text = "Select Brand",
-                Value = "0",
-                Selected = true
-            });
-
-            ViewBag.ModelNames = items;
 
             return View();
         }

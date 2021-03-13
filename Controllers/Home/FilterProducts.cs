@@ -10,18 +10,8 @@ namespace SmartPhoneStoreApplication.Controllers.Home
     {
         public ActionResult FilterProducts()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem
-            {
-                Text = "Select Brand",
-                Value = "0",
-                Selected = true
-            });
-            items.Add(new SelectListItem { Text = "Samsung", Value = "Samsung" });
-            items.Add(new SelectListItem { Text = "Poco", Value = "Poco" });
-            items.Add(new SelectListItem { Text = "Redmi", Value = "Redmi" });
-            items.Add(new SelectListItem { Text = "OnePlus", Value = "OnePlus" });
-            ViewBag.Brands = items;
+            var brandsFromDb = context.Products.Select(p => p.BrandName).Distinct();
+            ViewBag.Brands = new SelectList( brandsFromDb.ToList() , "BrandName");
 
             var productsData = context.Products.ToList();
             return View(productsData);
