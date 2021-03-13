@@ -1,0 +1,29 @@
+﻿
+#backgroundImg {
+    background-image: url('../Images/HomeIndexBg.jpg');
+    background-repeat: no-repeat;
+    width:100%;
+    height:90%;
+    background-size:cover;
+    
+}
+
+#bgCopy {
+    visibility: hidden;
+    height : 100%;
+    width: 100%
+}
+
+#shopNowBtndiv {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#ShopNowbtn
+{
+    font-size:25px;
+}

@@ -27,8 +27,8 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
                     string fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
                     string extension = Path.GetExtension(product.ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    product.ImagePath = "~/Content/Images/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                    product.ImagePath = "~/Content/Product_Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Content/Product_Images/"), fileName);
                     product.ImageFile.SaveAs(fileName);
 
                     adminContext.Products.Add(product);

@@ -104,6 +104,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\HomeIndex.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -298,6 +299,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CompareProducts.cshtml" />
     <Content Include="Views\Customer\TrackOrders.cshtml" />
+    <Content Include="Views\Shared\_MenuBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -308,6 +310,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Content\Product_Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,6 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Web;
     
     public partial class Product
@@ -36,13 +35,11 @@ namespace SmartPhoneStoreApplication
         public string Color { get; set; }
         public string SimType { get; set; }
         public string OsName { get; set; }
-        public string ImageName { get; set; }
-
-        [DisplayName("Upload Image")]
         public string ImagePath { get; set; }
+        public Nullable<int> Price { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

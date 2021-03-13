@@ -4,110 +4,183 @@
     ViewBag.Title = "CompareProducts";
 }
 
-<h2>Compare Products</h2>
-<hr/>
-<table>
-    
-    <tr>
-        <td></td>
-        <td>
+    <div style="padding-top:20px">
+        <h4>Compare Products</h4>
+    </div>
 
-            @using (Html.BeginForm())
-            {
+    <hr />
+    <table>
+        
+        <tr>
+            <td></td>
+            <td>
+
+                @using (Html.BeginForm())
+                {
+                    <div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BrandName, "BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("BrandName", ViewBag.Brands as SelectList, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div id="compareButton" class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Compare" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </td>
+        </tr>
+
+        @*<tr>
+            <td>
                 <div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.BrandName, "BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("BrandName", ViewBag.Brands as SelectList, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
 
-                    <div id="compareButton" class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Compare" class="btn btn-primary" />
-                        </div>
-                    </div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BrandName)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ModelName)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.RAM)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ROM)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Display)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Battery)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PrimaryCamera)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SecondaryCamera)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Processor)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Color)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SimType)
+                        </dt>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OsName)
+                        </dt>
+
+                    </dl>
                 </div>
+            </td>
+            <td>
+                <div id="productDetails">
+                </div>
+            </td>
+        </tr>*@
 
-            }
+        <tr>
+            <td></td>
+            <td id="ImageRow1"></td>
+        </tr>
 
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
+        <tr>
+            <td><b>Brand Name : </b></td>
+            <td id="BrandName1"></td>
+        </tr>
 
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.BrandName)
-                    </dt>
+        <tr>
+            <td><b>Model Name : </b></td>
+            <td id="ModelName1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ModelName)
-                    </dt>
+        <tr>
+            <td><b>RAM : </b></td>
+            <td id="Ram1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.RAM)
-                    </dt>
+        <tr>
+            <td><b>ROM : </b></td>
+            <td id="Rom1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ROM)
-                    </dt>
+        <tr>
+            <td><b>Display : </b></td>
+            <td id="Display1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Display)
-                    </dt>
+        <tr>
+            <td><b>Battery : </b></td>
+            <td id="Battery1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Battery)
-                    </dt>
+        <tr>
+            <td><b>Primary Camera : </b></td>
+            <td id="Primary1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PrimaryCamera)
-                    </dt>
+        <tr>
+            <td><b>Secondary : </b></td>
+            <td id="Secondary1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.SecondaryCamera)
-                    </dt>
+        <tr>
+            <td><b>Processor : </b></td>
+            <td id="Processor1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Processor)
-                    </dt>
+        <tr>
+            <td><b>Color : </b></td>
+            <td id="Color1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Color)
-                    </dt>
+        <tr>
+            <td><b>Sim Type : </b></td>
+            <td id="SimType1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.SimType)
-                    </dt>
+        <tr>
+            <td><b>Operating System : </b></td>
+            <td id="Os1"></td>
+        </tr>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.OsName)
-                    </dt>
+        <tr>
+            <td><b>Price : </b></td>
+            <td id="Price1"></td>
+        </tr>
+    </table>
+    <p>
 
-                </dl>
-            </div>
-        </td>
-        <td>
-            <div id="productDetails">
-            </div>
-        </td>
-    </tr>
-</table>
-<p>
-
-    @Html.ActionLink("Back to Home", "Index")
-</p>
-
+        @Html.ActionLink("Back to Home", "Index")
+    </p>
 
 
 <script src="~/Scripts/jquery-3.0.0.min.js"></script>
 <script type="text/Javascript">
             $(document).ready(function () {
                 $("#compareButton").click(function () {
-                    $("#productsDetails").remove();
+                    $("#productsDetails dl").remove();
                     $.ajax({
                         type: 'GET',
                         url: '@Url.Action("GetProductsForCompare")',
@@ -116,14 +189,66 @@
                         success: function (data) {
                             var items = '';
                             $.each(data, function (i, item) {
-                                var rows = '<dl class="dl-horizontal">'
-                                + "<dt>" + item.BrandName + "</dt>"
-                                     + "<dt>" + item.ModelName + "</dt>"
-                                     + "<dt>" + item.RAM + "</dt>"
-                                     + "<dt>" + item.ROM + "</dt>"
-                                     + "<dt>" + item.Display + "</dt>"
-                                    + "</dl>";
-                                $('#productDetails').append(rows)
+                                //var rows = '<dl class="dl-horizontal">'
+                                //+ "<dt>" + item.BrandName + "</dt>"
+                                //     + "<dt>" + item.ModelName + "</dt>"
+                                //     + "<dt>" + item.RAM + "</dt>"
+                                //     + "<dt>" + item.ROM + "</dt>"
+                                //     + "<dt>" + item.Display + "</dt>"
+                                //    + "</dl>";
+                                //$('#productDetails').append(rows)
+
+                                var pathLink = window.location.href ;
+                                console.log(pathLink)
+                                var arr = [];
+                                arr = pathLink.split('/');
+                                console.log(arr[2]);
+                                var path2 = item.ImagePath;
+                                console.log(path2);
+                                var path3 = path2.substring(1);
+                                console.log(path3);
+                                var path = 'http://'+ arr[2] + path3 ;
+                                var imageRow1 = "<img src="+ path +' width="250" height="500" />';
+                                $('#ImageRow1').append(imageRow1)
+
+                                var brandName1 =  item.BrandName ;
+                                $('#BrandName1').append(brandName1);
+
+                                var modelName1 = item.ModelName;
+                                $('#ModelName1').append(modelName1);
+
+                                var ram1 = item.RAM;
+                                $('#Ram1').append(ram1);
+
+                                var rom1 = item.ROM;
+                                $('#Rom1').append(rom1);
+
+                                var display1 = item.Display;
+                                $('#Display1').append(display1);
+
+                                var battery1 = item.Battery;
+                                $('#Battery1').append(battery1);
+
+                                var primary1 = item.PrimaryCamera;
+                                $('#Primary1').append(primary1);
+
+                                var secondary1 = item.SecondaryCamera;
+                                $('#Secondary1').append(secondary1);
+
+                                var processor1 = item.Processor;
+                                $('#Processor1').append(processor1);
+
+                                var color1 = item.Color;
+                                $('#Color1').append(color1);
+
+                                var simtype1 = item.SimType;
+                                $('#SimType1').append(simtype1);
+
+                                var os1 = item.OsName;
+                                $('#Os1').append(os1);
+
+                                var price1 = item.Price;
+                                $('#Price1').append(price1);
                             });
                         },
                         error:

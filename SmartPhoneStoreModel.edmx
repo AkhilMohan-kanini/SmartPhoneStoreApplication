@@ -66,8 +66,8 @@
           <Property Name="Color" Type="varchar" MaxLength="30" />
           <Property Name="SimType" Type="varchar" MaxLength="30" />
           <Property Name="OsName" Type="varchar" MaxLength="40" />
-          <Property Name="ImageName" Type="varchar" MaxLength="250" />
           <Property Name="ImagePath" Type="varchar(max)" />
+          <Property Name="Price" Type="int" />
         </EntityType>
         <Association Name="FK__Cart__CustomerID__239E4DCF">
           <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
@@ -202,8 +202,8 @@
           <Property Name="OsName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__1920BF5C" FromRole="Products" ToRole="Orders" />
           <NavigationProperty Name="Carts" Relationship="SmartPhoneStoreDBModel.FK__Cart__ProductID__24927208" FromRole="Product" ToRole="Cart" />
-          <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
         </EntityType>
         <Association Name="FK__Orders__Customer__182C9B23">
           <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
@@ -326,8 +326,8 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.Product)">
         <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="BrandName" ColumnName="BrandName" />
           <ScalarProperty Name="ModelName" ColumnName="ModelName" />

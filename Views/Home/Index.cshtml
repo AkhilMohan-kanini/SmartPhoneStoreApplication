@@ -1,17 +1,24 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
-
-<h2>Index</h2>
-
-
-@using (Html.BeginForm("FilterProducts", "Home"))
-{
-    <input type="submit" value="Filter Products" />
+<link rel="stylesheet" href="~/Content/CSS/HomeIndex.css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+@{
+    Html.RenderPartial("_MenuBar");
 }
+<div id="backgroundImg" >
 
-@using (Html.BeginForm("CompareProducts", "Home"))
-{
-    <input type="submit" value="Compare Products" />
-}
+    <div id="shopNowBtndiv">
+        @Html.ActionLink("Shop Now", "FilterProducts", "Home", new {@id="ShopNowbtn", @class = "btn btn-outline-light" })
+    </div>
+    <img id="bgCopy" src="~/Content/Images/HomeIndexBg.jpg" />
+</div>
+
+<hr />
+<footer>
+    <p>&copy; @DateTime.Now.Year - SmartPhone Store</p>
+</footer>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
