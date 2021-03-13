@@ -2,7 +2,10 @@
 
 @{
     ViewBag.Title = "CompareProducts";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
+
+<link rel="stylesheet" href="~/Content/CSS/CompareProducts.css"/>
 
     <div style="padding-top:20px">
         <h4>Compare Products</h4>
@@ -17,16 +20,56 @@
 
                 @using (Html.BeginForm())
                 {
+                <div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BrandName, "BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("BrandName", ViewBag.Brands as SelectList,"Select Brand" , htmlAttributes: new { @class = "form-control", @id="brandName1" })
+                            @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.ModelName, "ModelName", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ModelName", ViewBag.ModelNames as SelectList, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                    @*@Html.DropDownList("ModelNames");*@
+
+                    <div id="ModelDropDown1"></div>
+                    
+        
+                    <div id="compareButton" class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Compare" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+                }
+
+            </td>
+
+            <td>
+                @using (Html.BeginForm())
+                {
                     <div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.BrandName, "BrandName", htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownList("BrandName", ViewBag.Brands as SelectList, htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownList("BrandName", ViewBag.Brands as SelectList, "Select Brand", htmlAttributes: new { @class = "form-control", @id = "brandName2" })
                                 @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
-                        <div id="compareButton" class="form-group">
+                        <div id="ModelDropDown2"></div>
+
+
+                        <div id="compareButton2" class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Compare" class="btn btn-primary" />
                             </div>
@@ -34,8 +77,8 @@
                     </div>
 
                 }
-
             </td>
+
         </tr>
 
         @*<tr>
@@ -100,75 +143,89 @@
             </td>
         </tr>*@
 
-        <tr>
-            <td></td>
-            <td id="ImageRow1"></td>
-        </tr>
+    <tr>
+        <td></td>
+        <td id="ImageRow1" class="result1"></td>
+        <td id="ImageRow2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Brand Name : </b></td>
-            <td id="BrandName1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Brand Name : </b></p></td>
+        <td id="BrandName1" class="result1"></td>
+        <td id="BrandName2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Model Name : </b></td>
-            <td id="ModelName1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Model Name : </b></p></td>
+        <td id="ModelName1" class="result1"></td>
+        <td id="ModelName2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>RAM : </b></td>
-            <td id="Ram1"></td>
-        </tr>
+    <tr>
+        <td><p><b>RAM : </b></p></td>
+        <td id="Ram1" class="result1"></td>
+        <td id="Ram2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>ROM : </b></td>
-            <td id="Rom1"></td>
-        </tr>
+    <tr>
+        <td><p><b>ROM : </b></p></td>
+        <td id="Rom1" class="result1"></td>
+        <td id="Rom2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Display : </b></td>
-            <td id="Display1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Display : </b></p></td>
+        <td id="Display1" class="result1"></td>
+        <td id="Display2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Battery : </b></td>
-            <td id="Battery1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Battery : </b></p></td>
+        <td id="Battery1" class="result1"></td>
+        <td id="Battery2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Primary Camera : </b></td>
-            <td id="Primary1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Primary Camera : </b></p></td>
+        <td id="Primary1" class="result1"></td>
+        <td id="Primary2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Secondary : </b></td>
-            <td id="Secondary1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Secondary Camera : </b></p></td>
+        <td id="Secondary1" class="result1"></td>
+        <td id="Secondary2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Processor : </b></td>
-            <td id="Processor1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Processor : </b></p></td>
+        <td id="Processor1" class="result1"></td>
+        <td id="Processor2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Color : </b></td>
-            <td id="Color1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Color : </b></p></td>
+        <td id="Color1" class="result1"></td>
+        <td id="Color2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Sim Type : </b></td>
-            <td id="SimType1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Sim Type : </b></p></td>
+        <td id="SimType1" class="result1"></td>
+        <td id="SimType2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Operating System : </b></td>
-            <td id="Os1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Operating System : </b></p></td>
+        <td id="Os1" class="result1"></td>
+        <td id="Os2" class="result2"></td>
+    </tr>
 
-        <tr>
-            <td><b>Price : </b></td>
-            <td id="Price1"></td>
-        </tr>
+    <tr>
+        <td><p><b>Price : </b></p></td>
+        <td id="Price1" class="result1"></td>
+        <td id="Price2" class="result2"></td>
+    </tr>
     </table>
     <p>
 
@@ -178,14 +235,82 @@
 
 <script src="~/Scripts/jquery-3.0.0.min.js"></script>
 <script type="text/Javascript">
-            $(document).ready(function () {
+    $(document).ready(function () {
+
+                  $("#brandName1").change(function () {
+                      $("#ModelDropDown1").empty();
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("GetModels")',
+                        dataType: 'json',
+                        data: { id: $("#brandName1").val() },
+                        success: function (data) {
+                            var items = '';
+                            $.each(data, function (i, item) {
+                                console.log(data);
+                                var s = '<label id="modelLabel1">Model Name : </label>'+'<select class="form-control" id="ModelName1" name="ModelName1">"';
+                                var rows = '<option value="-1">Select a Model</option>';
+                                for (var j = 0; j < data.length; j++) {
+                                    console.log(data[j]);
+                                    s += '<option value="' + data[j] + '">' + data[j] +'</option>';
+                                }
+                                s += '</select>';
+                                $("#ModelDropDown1").append(s);
+                                console.log("Model Names 1 Success");
+                            });
+                        },
+                        error:
+                            function (ex) {
+                                var s = jquery.ParseJSON(response.responseText);
+                                alert("Message: " + s.Message);
+                                alert("Expection Type: " + s.ExceptionType);
+                            }
+                    });
+                      return false;
+                  })
+
+
+                 $("#brandName2").change(function () {
+                      $("#ModelDropDown2").empty();
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("GetModels")',
+                        dataType: 'json',
+                        data: { id: $("#brandName2").val() },
+                        success: function (data) {
+                            var items = '';
+                            $.each(data, function (i, item) {
+                                console.log(data);
+                                var s = '<label id="modelLabel2">Model Name : </label>'+'<select class="form-control" id="ModelName2" name="ModelName2">"';
+                                var rows = '<option value="-1">Select a Model</option>';
+                                for (var j = 0; j < data.length; j++) {
+                                    console.log(data[j]);
+                                    s += '<option value="' + data[j] + '">' + data[j] +'</option>';
+                                }
+                                s += '</select>';
+                                $("#ModelDropDown2").append(s);
+                                console.log("Model Names 2 Success");
+                            });
+                        },
+                        error:
+                            function (ex) {
+                                var s = jquery.ParseJSON(response.responseText);
+                                alert("Message: " + s.Message);
+                                alert("Expection Type: " + s.ExceptionType);
+                            }
+                    });
+                      return false;
+                  })
+
+
+
                 $("#compareButton").click(function () {
-                    $("#productsDetails dl").remove();
+                    $(".result1").empty();
                     $.ajax({
                         type: 'GET',
                         url: '@Url.Action("GetProductsForCompare")',
                         dataType: 'json',
-                        data: { id: $("#BrandName").val() },
+                        data: { id: $("#ModelName1").val() },
                         success: function (data) {
                             var items = '';
                             $.each(data, function (i, item) {
@@ -211,44 +336,117 @@
                                 var imageRow1 = "<img src="+ path +' width="250" height="500" />';
                                 $('#ImageRow1').append(imageRow1)
 
-                                var brandName1 =  item.BrandName ;
+                                var brandName1 =  "<p>"+item.BrandName + "</p>" ;
                                 $('#BrandName1').append(brandName1);
 
-                                var modelName1 = item.ModelName;
+                                var modelName1 = "<p>" + item.ModelName + "</p>";
                                 $('#ModelName1').append(modelName1);
 
-                                var ram1 = item.RAM;
+                                var ram1 = "<p>" + item.RAM + "</p>";
                                 $('#Ram1').append(ram1);
 
-                                var rom1 = item.ROM;
+                                var rom1 = "<p>" + item.ROM + "</p>";
                                 $('#Rom1').append(rom1);
 
-                                var display1 = item.Display;
+                                var display1 = "<p>" + item.Display + "</p>";
                                 $('#Display1').append(display1);
 
-                                var battery1 = item.Battery;
+                                var battery1 = "<p>" + item.Battery + "</p>";
                                 $('#Battery1').append(battery1);
 
-                                var primary1 = item.PrimaryCamera;
+                                var primary1 = "<p>" + item.PrimaryCamera + "</p>";
                                 $('#Primary1').append(primary1);
 
-                                var secondary1 = item.SecondaryCamera;
+                                var secondary1 = "<p>" + item.SecondaryCamera + "</p>";
                                 $('#Secondary1').append(secondary1);
 
-                                var processor1 = item.Processor;
+                                var processor1 = "<p>" + item.Processor + "</p>";
                                 $('#Processor1').append(processor1);
 
-                                var color1 = item.Color;
+                                var color1 = "<p>" + item.Color + "</p>";
                                 $('#Color1').append(color1);
 
-                                var simtype1 = item.SimType;
+                                var simtype1 = "<p>" + item.SimType + "</p>";
                                 $('#SimType1').append(simtype1);
 
-                                var os1 = item.OsName;
+                                var os1 = "<p>" + item.OsName + "</p>";
                                 $('#Os1').append(os1);
 
-                                var price1 = item.Price;
+                                var price1 = "<p>" + item.Price + "</p>";
                                 $('#Price1').append(price1);
+                            });
+                        },
+                        error:
+                            function (ex) {
+                                var s = jquery.ParseJSON(response.responseText);
+                                alert("Message: " + s.Message);
+                                alert("Expection Type: " + s.ExceptionType);
+                            }
+                    });
+                    return false;
+                })
+
+                $("#compareButton2").click(function () {
+                    $(".result2").empty();
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("GetProductsForCompare")',
+                        dataType: 'json',
+                        data: { id: $("#ModelName2").val() },
+                        success: function (data) {
+                            var items = '';
+                            $.each(data, function (i, item) {
+                                var pathLink = window.location.href;
+                                console.log(pathLink)
+                                var arr = [];
+                                arr = pathLink.split('/');
+                                console.log(arr[2]);
+                                var path2 = item.ImagePath;
+                                console.log(path2);
+                                var path3 = path2.substring(1);
+                                console.log(path3);
+                                var path = 'http://' + arr[2] + path3;
+                                var imageRow2 = "<img src=" + path + ' width="250" height="500" />';
+                                $('#ImageRow2').append(imageRow2)
+
+                                var brandName2 = item.BrandName;
+                                $('#BrandName2').append(brandName2);
+
+                                var modelName2 = item.ModelName;
+                                $('#ModelName2').append(modelName2);
+
+                                var ram2 = item.RAM;
+                                $('#Ram2').append(ram2);
+
+                                var rom2 = item.ROM;
+                                $('#Rom2').append(rom2);
+
+                                var display2 = item.Display;
+                                $('#Display2').append(display2);
+
+                                var battery2 = item.Battery;
+                                $('#Battery2').append(battery2);
+
+                                var primary2 = item.PrimaryCamera;
+                                $('#Primary2').append(primary2);
+
+                                var secondary2 = item.SecondaryCamera;
+                                $('#Secondary2').append(secondary2);
+
+                                var processor2 = item.Processor;
+                                $('#Processor2').append(processor2);
+
+                                var color2 = item.Color;
+                                $('#Color2').append(color2);
+
+                                var simtype2 = item.SimType;
+                                $('#SimType2').append(simtype2);
+
+                                var os2 = item.OsName;
+                                $('#Os2').append(os2);
+
+                                var price2 = item.Price;
+                                $('#Price2').append(price2);
                             });
                         },
                         error:

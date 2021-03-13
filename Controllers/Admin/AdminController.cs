@@ -16,6 +16,7 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
             return View();
         }
 
+        
         [HttpPost]
         public ActionResult AdminLogin(AdminLogin admin)
         {
@@ -49,9 +50,17 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
             }
         }
 
+        [Route("DashBoard")]
         public ActionResult Index()
         {
-            ViewData["AdminID"] = TempData.Peek("AdminID").ToString();
+            if (TempData["AdminID"] != null)
+            {
+                ViewData["AdminID"] = TempData.Peek("AdminID").ToString();
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             return View();
         }
     }

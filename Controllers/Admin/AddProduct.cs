@@ -33,7 +33,7 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
 
                     adminContext.Products.Add(product);
                     adminContext.SaveChanges();
-                    ViewBag.ErrorMessage = "Success";
+                    ViewBag.Message = "Success";
                        
                 }
                

@@ -104,6 +104,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\CompareProducts.css" />
     <Content Include="Content\CSS\HomeIndex.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -300,6 +301,7 @@
     <Content Include="Views\Home\CompareProducts.cshtml" />
     <Content Include="Views\Customer\TrackOrders.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
+    <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

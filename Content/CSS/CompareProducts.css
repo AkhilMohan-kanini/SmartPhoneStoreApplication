@@ -1,0 +1,10 @@
+﻿body {
+}
+
+table,th,tr,td{
+    padding : 10px; 
+}
+
+td{
+    width:500px;
+}
