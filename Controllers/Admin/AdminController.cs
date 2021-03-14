@@ -30,6 +30,7 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
                     if (admin.AdminPassword == adminDataFromDB.AdminPassword)
                     {
                         TempData["AdminID"] = adminDataFromDB.AdminID;
+                        Session["AdminID"] = adminDataFromDB.AdminID;
                         return RedirectToAction("Index");
                     }
                     else
@@ -53,7 +54,7 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
         [Route("DashBoard")]
         public ActionResult Index()
         {
-            if (TempData["AdminID"] != null)
+            if (Session["AdminID"] != null)
             {
                 ViewData["AdminID"] = TempData.Peek("AdminID").ToString();
             }
@@ -62,6 +63,14 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
                 return RedirectToAction("AdminLogin", "Admin");
             }
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+
+            Session.Clear();
+            return RedirectToAction("AdminLogin", "Admin");
+            
         }
     }
 }

@@ -1,26 +1,39 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-<h2>Index</h2>
 
 <h3>Welcome, @ViewData["AdminID"]</h3>
 
-@using (Html.BeginForm("AddProduct", "Admin",FormMethod.Get))
-{
-    <input type="Submit" value="Add Product" />
-}
+<div style="margin-top:40px">
+    @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Get))
+    {
+        <input class="btn btn-primary btn-lg" type="Submit" value="Add Product" />
+    }
+</div>
 
+<div style="margin-top:40px">
 @using (Html.BeginForm("ViewProducts", "Admin"))
 {
-    <input type="Submit" value="View Products" />
+    <input class="btn btn-primary btn-lg" type="Submit" value="View Products" />
 }
+</div>
 
-@using (Html.BeginForm("ViewOrders", "Admin"))
-{
-    <input type="Submit" value="View Orders" />
-}
+<div style="margin-top:40px">
+    @using (Html.BeginForm("ViewOrders", "Admin"))
+    {
+        <input class="btn btn-primary btn-lg" type="Submit" value="View Orders" />
+    }
+</div>
+
+<div style="margin-top:40px">
+    @using (Html.BeginForm("LogOut", "Admin"))
+    {
+        <input class="btn btn-danger " type="Submit" value="Log Out" />
+    }
+</div>
 
 
 

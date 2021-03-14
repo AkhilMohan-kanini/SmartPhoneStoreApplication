@@ -14,6 +14,13 @@ namespace SmartPhoneStoreApplication.Controllers.Home
             var brandNamesFromDb = context.Products.Select(p => p.BrandName).Distinct();
             ViewBag.Brands = new SelectList(brandNamesFromDb.ToList(), "BrandName");
 
+            if(Session["UserID"] != null)
+            {
+                int tempId = (int)Session["UserID"];
+                var user = context.Customers.Find(tempId);
+                ViewBag.UserName = user.FirstName;
+                 
+            }
 
             return View();
         }

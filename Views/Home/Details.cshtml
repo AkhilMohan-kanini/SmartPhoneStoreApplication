@@ -1,0 +1,152 @@
+﻿@model SmartPhoneStoreApplication.Product
+
+@{
+    ViewBag.Title = "details";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSS/CompareProducts.css" />
+
+<h2 style="margin-top:20px">Product Details</h2>
+<hr />
+<table>
+
+    <tr>
+        <td>
+            <img src=@Url.Content(Model.ImagePath) width="250" height="500" />
+        </td>
+        <td>
+            <div>
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BrandName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BrandName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModelName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModelName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RAM)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RAM)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ROM)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ROM)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Display)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Display)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Battery)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Battery)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PrimaryCamera)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PrimaryCamera)
+                    </dd>
+                </dl>
+
+            </div>
+
+        </td>
+
+        <td>
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SecondaryCamera)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SecondaryCamera)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Processor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Processor)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Color)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SimType)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SimType)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OsName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.OsName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        ₹ @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                </dl>
+
+            </div>
+        </td>
+
+    </tr>
+
+</table>
+
+<div style="text-align:center;">
+    @using (Html.BeginForm("BuyProduct" , "Customer" , FormMethod.Post , new { id = Model.ProductID }))
+    {
+        <input class="btn btn-success btn-lg" type="Submit" value=" Buy Product " />
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

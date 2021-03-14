@@ -43,7 +43,7 @@
                     <div id="ModelDropDown1"></div>
                     
         
-                    <div id="compareButton" class="form-group">
+                    <div style="margin-top:5px;" id="compareButton" class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Compare" class="btn btn-primary" />
                         </div>
@@ -372,7 +372,7 @@
                                 var os1 = "<p>" + item.OsName + "</p>";
                                 $('#Os1').append(os1);
 
-                                var price1 = "<p>" + item.Price + "</p>";
+                                var price1 = "<p>" + "₹ " + item.Price + "</p>";
                                 $('#Price1').append(price1);
                             });
                         },
@@ -445,7 +445,7 @@
                                 var os2 = item.OsName;
                                 $('#Os2').append(os2);
 
-                                var price2 = item.Price;
+                                var price2 = "₹ " + item.Price;
                                 $('#Price2').append(price2);
                             });
                         },

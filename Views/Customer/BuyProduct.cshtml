@@ -1,0 +1,35 @@
+﻿@model SmartPhoneStoreApplication.Order
+
+@{
+    ViewBag.Title = "Buy Product";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h2>Buy Product</h2>
+<hr/>
+
+<p><b>Brand Name : </b> @ViewBag.BrandName</p>
+
+<p><b>Model Name : </b> @ViewBag.ModelName</p>
+
+<p><b>Price : </b> @ViewBag.Price</p>
+
+@using (Html.BeginForm(new { id = ViewBag.ProductID }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index" , "Home")
+</div>

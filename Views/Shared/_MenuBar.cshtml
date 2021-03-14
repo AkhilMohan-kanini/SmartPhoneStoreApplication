@@ -16,6 +16,43 @@
                 @Html.ActionLink("Shop Phones", "FilterProducts", "Home", new { @class = "nav-link" })
                 @Html.ActionLink("Compare Phones", "CompareProducts", "Home", new { @class = "nav-link" })
             </div>
+            <div class="navbar-nav ml-auto">
+                @if (@ViewBag.UserName == null)
+                {
+                    <div id="loginBtn" style="margin-right:100px;">
+                        @Html.ActionLink("Login", "Login", "Customer", null, new { @class = "nav-link " })
+                    </div>
+                }
+                else
+                {
+
+            <
+                <img src="~/Content/Images/avtr-small.png" style="margin-top:5px;" width="25" height="25" />
+                <div class="collapse navbar-collapse" style="margin-right:100px;">
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @ViewBag.UserName
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @Html.ActionLink("My Profile", "UserProfile", "Customer", new { id = ViewBag.UserID }, new { @class = "dropdown-item" })
+                                <a class="dropdown-item" href="#">My Orders</a>
+                                <a class="dropdown-item" href="#">Log out</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            
+                }
+
+
+            </div>
         </div>
     </div>
 </nav>
+
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+   

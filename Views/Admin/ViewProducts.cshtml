@@ -4,6 +4,8 @@
     ViewBag.Title = "ViewProducts";
 }
 
+<link rel="stylesheet" href="~/Content/CSS/CompareProducts.css"/>
+
 <h2>ViewProducts</h2>
 
 <p>
@@ -50,57 +52,61 @@
         <th>
             @Html.DisplayNameFor(model => model.OsName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImagePath)
-            @*<img src="@Url.Content(item.ImagePath)" width="250" height="250"/>*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModelName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RAM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ROM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Display)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Battery)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrimaryCamera)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecondaryCamera)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Processor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SimType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OsName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BrandName)
+    </td>
+    <td>
+        <img src="@Url.Content(item.ImagePath)" width="100" height="200" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModelName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RAM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ROM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Display)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Battery)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrimaryCamera)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondaryCamera)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Processor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Color)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SimType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OsName)
+    </td>
+    <td colspan="2">
+        ₹ @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditProduct", new { id = item.ProductID }) |
+        @Html.ActionLink("Delete", "DeleteProduct", new { id = item.ProductID })
+    </td>
+</tr>
 }
 
 </table>

@@ -251,10 +251,18 @@
     </Compile>
     <Compile Include="Controllers\Admin\AddProduct.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\DeleteProduct.cs" />
+    <Compile Include="Controllers\Admin\EditProduct.cs" />
     <Compile Include="Controllers\Admin\ViewOrders.cs" />
-    <Compile Include="Controllers\Customer\CustomerController.cs" />
-    <Compile Include="Controllers\Customer\TrackOrders.cs" />
+    <Compile Include="Controllers\CustomerDetails\BuyProduct.cs" />
+    <Compile Include="Controllers\CustomerDetails\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerDetails\CustomerProfile.cs" />
+    <Compile Include="Controllers\CustomerDetails\EditProfile.cs" />
+    <Compile Include="Controllers\CustomerDetails\Login.cs" />
+    <Compile Include="Controllers\CustomerDetails\Register.cs" />
+    <Compile Include="Controllers\CustomerDetails\TrackOrders.cs" />
     <Compile Include="Controllers\Home\CompareProducts.cs" />
+    <Compile Include="Controllers\Home\Details.cs" />
     <Compile Include="Controllers\Home\FilterProducts.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Customer.cs">
@@ -302,6 +310,15 @@
     <Content Include="Views\Customer\TrackOrders.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
+    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
+    <Content Include="Views\Customer\UserProfile.cshtml" />
+    <Content Include="Views\Customer\EditProfile.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Admin\DeleteProduct.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutPage.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Customer\BuyProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

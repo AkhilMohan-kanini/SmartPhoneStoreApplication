@@ -11,15 +11,26 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Cart
     {
+        [DisplayName("Cart ID")]
         public int CartID { get; set; }
+
+        [DisplayName("Customer ID")]
         public Nullable<int> CustomerID { get; set; }
+
+        [DisplayName("Product ID")]
         public Nullable<int> ProductID { get; set; }
+
+        [DisplayName("Cart Status")]
         public string CartStatus { get; set; }
-    
+
+        [DisplayName("Customer")]
         public virtual Customer Customer { get; set; }
+
+        [DisplayName("Product")]
         public virtual Product Product { get; set; }
     }
 }

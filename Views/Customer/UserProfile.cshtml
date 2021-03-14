@@ -1,0 +1,113 @@
+﻿@model SmartPhoneStoreApplication.Customer
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSS/CompareProducts.css"/>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User Profile</title>
+</head>
+<body>
+    <div style="padding-top:20px">
+        <h4>Profile</h4>
+    </div>
+    
+    <div>
+        <table>
+            <tr>
+                <td><b>  @Html.DisplayNameFor(model => model.FirstName) </b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.FirstName)
+                </td>
+
+                <td>
+                    <b>@Html.DisplayNameFor(model => model.LastName)</b>
+                </td>
+
+                <td>
+                     @Html.DisplayFor(model => model.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.MobileNumber)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.MobileNumber)
+                </td>
+
+                <td>
+                    <b>  @Html.DisplayNameFor(model => model.EmailID)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.EmailID)
+                </td>
+            </tr>
+            <tr>
+                
+                <td>
+                    <b>  @Html.DisplayNameFor(model => model.AddressLine1)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.AddressLine1)
+                </td>
+
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.AddressLine2)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.AddressLine2)
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.District)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.District)
+                </td>
+
+                <td>
+                    <b>   @Html.DisplayNameFor(model => model.PinCode)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.PinCode)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> @Html.DisplayNameFor(model => model.CustomerState)</b>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.CustomerState)
+                </td>
+
+                <td>
+                </td>
+            </tr>
+
+        </table>
+
+        <p>
+            @Html.ActionLink("Update Profile", "EditProfile", new { id = Model.CustomerID }) |
+            @Html.ActionLink("Home", "Index", "Home")
+        </p>
+    </div>
+</body>
+</html>

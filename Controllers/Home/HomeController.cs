@@ -12,6 +12,24 @@ namespace SmartPhoneStoreApplication.Controllers.Home
         // GET: Home
         public ActionResult Index()
         {
+            if (TempData["UserID"] != null)
+            {
+                int tempID;
+                string id = TempData.Peek("UserID").ToString();
+                TempData["UserID"] = id;
+                ViewBag.UserID = id;
+                try
+                {
+                    tempID =  Int32.Parse(id);
+                    var user = context.Customers.Find(tempID);        
+                    ViewBag.UserName = user.FirstName;
+                }
+                catch
+                {
+                    return RedirectToAction("Login", "Customer");
+                }
+                
+            }
             return View();
         }
     }

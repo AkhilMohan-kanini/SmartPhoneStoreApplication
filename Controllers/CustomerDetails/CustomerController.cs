@@ -4,14 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SmartPhoneStoreApplication.Controllers.Customer
+namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
 {
     public partial class CustomerController : Controller
     {
 
-        public ActionResult TrackOrders()
+        SmartPhoneStoreDBEntities customerContext = new SmartPhoneStoreDBEntities();
+        // GET: Customer
+        public ActionResult Index()
         {
             return View();
         }
+
     }
 }

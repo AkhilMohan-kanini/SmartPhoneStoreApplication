@@ -11,8 +11,17 @@ namespace SmartPhoneStoreApplication.Controllers.Admin
 
         public ActionResult ViewOrders()
         {
-            var ordersData = adminContext.Orders.ToList();
-            return View(ordersData);
+            
+            if (Session["AdminID"] != null)
+            {
+               var  ordersData = adminContext.Orders.ToList();
+                return View(ordersData);
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            
         }
     }
 }

@@ -37,7 +37,7 @@
     
     @foreach (var item in Model)
     {
-
+           
     <tr class="AllProducts">
         <td><img src=@Url.Content(item.ImagePath) width="100" height="200" /></td>
         <td>
@@ -45,7 +45,7 @@
             <br />
             <b>Model Name : </b>  @Html.DisplayFor(modelItem => item.ModelName)
             <br />
-            <b>Price : </b>    @Html.DisplayFor(modelItem => item.Price)
+            <b>Price : </b>   ₹  @Html.DisplayFor(modelItem => item.Price)
             <br />
             <b>RAM : </b> @Html.DisplayFor(modelItem => item.RAM)
             <br />
@@ -54,8 +54,8 @@
             <b>Display : </b> @Html.DisplayFor(modelItem => item.Display)
             <br />
             <b>Battery : </b> @Html.DisplayFor(modelItem => item.Battery)
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+          <td>
+            @Html.ActionLink("Click for more details", "Details",  new { id = item.ProductID })
         </td>
     </tr>
 
@@ -88,6 +88,7 @@
                     var items = '';
                     $.each(data, function (i, item1) {
 
+                        console.log()
                         var pathLink = window.location.href;
                         console.log(pathLink)
                         var arr = [];
@@ -101,14 +102,14 @@
 
                         var rows = "<tr>"
                             + "<td><img src=" + path + ' width="100" height="200" /></td>'
-                        + "<td><b>Brand : </b>" + item1.BrandName + "<br/>"
+                            + "<td><b>Brand : </b>" + item1.BrandName + "<br/>"
                             + "<b>Model Name : </b> " + item1.ModelName + "</br>"
-                            + "<b>Price : </b>" + item1.Price + "</br>"
+                            + "<b>Price : </b>" + "₹ " + item1.Price + "</br>"
                             + "<b>RAM : </b> " + item1.RAM + "<br/>"
                             + "<b>ROM : </b>" + item1.ROM + "<br/>"
                             + "<b>Display : </b>" + item1.Display + "<br/>"
                             + "<b>Battery : </b>" + item1.Battery + "<br/>"
-                            + "</td>" 
+                            + "</td><td>" + '<a href="http://' + arr[2] + "/Home/details/" + item1.ProductID + '">Click for more details</a></td>';
                             +"</tr>";
                         $('#productsTbl #tbody1').append(rows)
                     });

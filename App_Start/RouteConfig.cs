@@ -25,6 +25,12 @@ namespace SmartPhoneStoreApplication
                 url: "Admin/{controller}/{action}/{id}",
                 defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
                 );
+
+            routes.MapRoute(
+                name: "Customer",
+                url: "CustomerDetails/{controller}/{action}/{id}",
+                defaults: new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
+                );
         }
     }
 }
