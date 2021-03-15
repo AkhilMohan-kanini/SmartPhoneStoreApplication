@@ -11,7 +11,6 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Web;
     
     public partial class Product
@@ -22,53 +21,25 @@ namespace SmartPhoneStoreApplication
             this.Orders = new HashSet<Order>();
             this.Carts = new HashSet<Cart>();
         }
-
-        [DisplayName("Product ID")]
+    
         public int ProductID { get; set; }
-
-        [DisplayName("Brand Name")]
         public string BrandName { get; set; }
-
-        [DisplayName("Model Name")]
         public string ModelName { get; set; }
-
-        [DisplayName("RAM")]
         public string RAM { get; set; }
-
-        [DisplayName("ROM")]
         public string ROM { get; set; }
-
-        [DisplayName("Display")]
         public string Display { get; set; }
-
-        [DisplayName("Battery")]
         public string Battery { get; set; }
-
-        [DisplayName("Primary Camera")]
         public string PrimaryCamera { get; set; }
-
-        [DisplayName("Secondary Camera")]
         public string SecondaryCamera { get; set; }
-
-        [DisplayName("Processor")]
         public string Processor { get; set; }
-
-        [DisplayName("Color")]
         public string Color { get; set; }
-
-        [DisplayName("SIM Type")]
         public string SimType { get; set; }
-
-        [DisplayName("OS Name")]
         public string OsName { get; set; }
-
-        [DisplayName("Image Path")]
         public string ImagePath { get; set; }
-
-        [DisplayName("Price ")]
         public Nullable<int> Price { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

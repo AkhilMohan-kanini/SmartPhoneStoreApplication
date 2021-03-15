@@ -18,6 +18,7 @@ namespace SmartPhoneStoreApplication
         public SmartPhoneStoreDBEntities()
             : base("name=SmartPhoneStoreDBEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -11,30 +11,17 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Order
     {
-        [DisplayName("Order ID")]
         public int OrderID { get; set; }
-
-        [DisplayName("Customer ID")]
         public Nullable<int> CustomerID { get; set; }
-
-        [DisplayName("Product ID")]
         public Nullable<int> ProductID { get; set; }
-
-        [DisplayName("Quantity")]
         public Nullable<int> Quantity { get; set; }
-
-        [DisplayName("Order Status")]
         public string OrderStatus { get; set; }
-
-        [DisplayName("Ordered Date")]
         public Nullable<System.DateTime> OrderedDate { get; set; }
-
-        [DisplayName("Expected Date")]
         public Nullable<System.DateTime> ExpectedDate { get; set; }
+        public Nullable<int> OrderPrice { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

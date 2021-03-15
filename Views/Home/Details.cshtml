@@ -140,13 +140,23 @@
 
 </table>
 
-<div style="text-align:center;">
-    @using (Html.BeginForm("BuyProduct" , "Customer" , FormMethod.Post , new { id = Model.ProductID }))
-    {
-        <input class="btn btn-success btn-lg" type="Submit" value=" Buy Product " />
-    }
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@if (Session["UserID"] != null)
+{
+
+    <div style="text-align:center;">
+        @using (Html.BeginForm("BuyProduct", "Customer", new { id = Model.ProductID }))
+        {
+            <input class="btn btn-success btn-lg" type="Submit" value=" Buy Product " />
+        }
+    </div>
+}
+else
+{
+    <div style="text-align:center;">
+        <input class="btn btn-success btn-lg" type="Submit" value=" Buy Product " disabled/>
+    </div>
+}
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

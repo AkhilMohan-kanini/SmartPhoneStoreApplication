@@ -19,9 +19,9 @@ namespace SmartPhoneStoreApplication.Controllers.Home
                 int tempId = (int)Session["UserID"];
                 var user = context.Customers.Find(tempId);
                 ViewBag.UserName = user.FirstName;
-                 
+                ViewBag.UserID = tempId;
             }
-
+             
             return View();
         }
 
@@ -37,6 +37,7 @@ namespace SmartPhoneStoreApplication.Controllers.Home
         {
 
             var productsData = context.Products.Where(p => p.ModelName == id);
+
             return Json(productsData, JsonRequestBehavior.AllowGet);
         }
     }

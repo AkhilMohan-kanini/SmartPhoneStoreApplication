@@ -11,6 +11,7 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
 
         public ActionResult BuyProduct(string id)
         {
+            System.Diagnostics.Debug.WriteLine(id);
             if (Session["UserID"] != null)
             {
                 int tempId = (int)Session["UserID"];
@@ -26,6 +27,10 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
                 ViewBag.BrandName = productData.BrandName;
                 ViewBag.ModelName = productData.ModelName;
                 ViewBag.Price = productData.Price;
+
+                System.Diagnostics.Debug.WriteLine(productData.BrandName);
+                System.Diagnostics.Debug.WriteLine(productData.ModelName);
+                System.Diagnostics.Debug.WriteLine(productData.Price);
             }
             catch
             {
@@ -54,8 +59,8 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
                 order.Quantity = 1;
                 order.OrderStatus = "Confirmed";
                 order.OrderedDate = DateTime.Now;
-                order.ExpectedDate = (DateTime.Now).AddDays(3);
-                order.Price = productData.Price;
+                order.ExpectedDate = (DateTime.Now.Date).AddDays(3);
+                order.OrderPrice = productData.Price;
 
                 customerContext.Orders.Add(order);
                 customerContext.SaveChanges();

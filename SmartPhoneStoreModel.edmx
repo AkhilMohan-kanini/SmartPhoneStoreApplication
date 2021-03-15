@@ -48,6 +48,7 @@
           <Property Name="OrderStatus" Type="varchar" MaxLength="20" />
           <Property Name="OrderedDate" Type="datetime" />
           <Property Name="ExpectedDate" Type="datetime" />
+          <Property Name="OrderPrice" Type="int" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -182,6 +183,7 @@
           <Property Name="ExpectedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__182C9B23" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="Product" Relationship="Self.FK__Orders__ProductI__1920BF5C" FromRole="Orders" ToRole="Products" />
+          <Property Name="OrderPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -313,7 +315,8 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="IsTypeOf(SmartPhoneStoreDBModel.Order)">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />

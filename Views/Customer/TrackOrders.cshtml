@@ -2,9 +2,12 @@
 
 @{
     ViewBag.Title = "TrackOrders";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<h2>TrackOrders</h2>
+<link rel="stylesheet" href="~/Content/CSS/CompareProducts.css" />
+
+<h2>Track Orders</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +15,17 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Product.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ModelName)
+        </th>
+
+        <th>
             @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPrice)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderStatus)
@@ -23,41 +36,34 @@
         <th>
             @Html.DisplayNameFor(model => model.ExpectedDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.CustomerPassword)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.BrandName)
-        </th>
-        <th></th>
+
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpectedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.CustomerPassword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.BrandName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.BrandName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.ModelName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderStatus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ExpectedDate)
+    </td>
+
+</tr>
 }
 
 </table>

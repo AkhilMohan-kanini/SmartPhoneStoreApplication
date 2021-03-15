@@ -9,9 +9,18 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
     public partial class CustomerController : Controller
     {
 
-        public ActionResult TrackOrders()
+        public ActionResult TrackOrders(string id)
         {
-            return View();
+            try
+            {
+                int tempID = Int32.Parse(id);
+                var ordersFromDB = customerContext.Orders.Where(o => o.CustomerID == tempID);
+                return View(ordersFromDB);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

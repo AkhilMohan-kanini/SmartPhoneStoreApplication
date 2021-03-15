@@ -11,8 +11,7 @@ namespace SmartPhoneStoreApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,38 +20,17 @@ namespace SmartPhoneStoreApplication
             this.Orders = new HashSet<Order>();
             this.Carts = new HashSet<Cart>();
         }
-
-        [DisplayName("Customer ID")]
+    
         public int CustomerID { get; set; }
-
-        [DisplayName("Customer Password")]
         public string CustomerPassword { get; set; }
-
-        [DisplayName("First Name")]
         public string FirstName { get; set; }
-
-        [DisplayName("Last Name")]
         public string LastName { get; set; }
-
-        [DisplayName("Mobile Number")]
         public string MobileNumber { get; set; }
-
-        [DisplayName("Email ID")]
         public string EmailID { get; set; }
-
-        [DisplayName("Address Line 1")]
         public string AddressLine1 { get; set; }
-
-        [DisplayName("Address Line 2")]
         public string AddressLine2 { get; set; }
-
-        [DisplayName("Pin Code")]
         public Nullable<int> PinCode { get; set; }
-
-        [DisplayName("District")]
         public string District { get; set; }
-
-        [DisplayName("Customer State")]
         public string CustomerState { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

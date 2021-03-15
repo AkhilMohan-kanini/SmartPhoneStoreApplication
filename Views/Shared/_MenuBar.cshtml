@@ -35,9 +35,9 @@
                                 @ViewBag.UserName
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @Html.ActionLink("My Profile", "UserProfile", "Customer", new { id = ViewBag.UserID }, new { @class = "dropdown-item" })
-                                <a class="dropdown-item" href="#">My Orders</a>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                @Html.ActionLink("My Profile", "UserProfile", "Customer", new { id = ViewBag.UserID },  new { @class = "dropdown-item" })
+                                @Html.ActionLink("My Orders", "TrackOrders", "Customer", new { id = ViewBag.UserID },  new { @class = "dropdown-item" } )
+                                @Html.ActionLink("Log Out", "LogOut", "Customer", new { id = ViewBag.UserID },  new { @class = "dropdown-item" } )   
                             </div>
                         </li>
 
