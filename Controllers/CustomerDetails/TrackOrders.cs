@@ -11,6 +11,28 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
 
         public ActionResult TrackOrders(string id)
         {
+            int tempID2;
+            Customer customerData = null;
+            ViewBag.UserID = id;
+
+            if (Session["UserID"] != null)
+            {
+                try
+                {
+                    tempID2 = Int32.Parse(id);
+                    customerData = customerContext.Customers.Find(tempID2);
+                    ViewBag.UserName = customerData.FirstName;
+                }
+                catch
+                {
+                    return RedirectToAction("Login", "Customer");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Customer");
+            }
+
             try
             {
                 int tempID = Int32.Parse(id);

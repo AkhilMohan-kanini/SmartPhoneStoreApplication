@@ -12,12 +12,14 @@ OsName VARCHAR(40))
 
 ALTER TABLE Products ADD  ImagePath VARCHAR(MAX)  
 
+
 Alter TABLE Products ADD Price	INT 
 
 CREATE TABLE Orders(OrderID INT PRIMARY KEY IDENTITY(1,1) , CustomerID INT FOREIGN KEY REFERENCES CUSTOMERS(CustomerID) , ProductID INT
 FOREIGN KEY REFERENCES PRODUCTS(ProductID) , Quantity INT , OrderStatus VARCHAR(20), OrderedDate DATETIME , ExpectedDate DATETIME)
 
-Alter TABLE Orders ADD Price	INT
+Alter TABLE Orders ADD OrderPrice	INT
+
 
 CREATE TABLE Cart(CartID INT PRIMARY KEY IDENTITY(1,1), CustomerID INT FOREIGN KEY REFERENCES Customers(CustomerID), ProductID INT
 FOREIGN KEY REFERENCES Products(ProductID), CartStatus VARCHAR(20) NOT NULL)
@@ -32,5 +34,7 @@ INSERT INTO AdminLogin values('admin' , 'admin')
 	SELECT * FROM Orders
 	SELECT * FROM AdminLogin
 	SELECT * FROM Cart
+
+	truncate table Orders
 
 	

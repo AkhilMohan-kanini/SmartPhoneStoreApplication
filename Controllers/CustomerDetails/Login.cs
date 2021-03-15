@@ -42,6 +42,12 @@ namespace SmartPhoneStoreApplication.Controllers.CustomerDetails
             }
         }
 
+        public ActionResult LogOut(string id)
+        {
+            Session.Clear();
+            return RedirectToAction("Login");
+        }
+
 
     }
 }
